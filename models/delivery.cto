@@ -1,0 +1,233 @@
+/**
+ * Write your model definitions here
+ */
+
+namespace delivery
+
+abstract participant ProductHolder identified by holderId{
+  o String holderId
+  o String password optional
+}
+
+abstract asset History identified by historyId{
+  o String historyId
+}
+
+concept DeliveredOrders {
+  o String DeliveryId
+  --> Order[] orders
+  --> ProductHolder deliveredTo
+}
+
+concept AssignedOrders {
+  o String DeliveryId
+  --> Order[] orders
+  --> ProductHolder assignedTo
+}
+
+concept ReceivedOrders {
+  o String DeliveryId
+  --> Order[] orders
+  --> ProductHolder receivedFrom
+}
+
+concept ScannedOrders {
+  o String DeliveryId
+  --> Order[] orders
+  --> ProductHolder scannedAt
+}
+
+concept WarehouseTransactions  extends HistoryFields{
+  o AssignedOrders ordersAssigned optional
+  o ReceivedOrders ordersReceived optional
+  o ScannedOrders ordersScanned optional
+  --> Order orderPlaced optional
+}
+
+concept OrderIdOrderStatus {
+  --> Order order
+  o Integer statusId
+}
+concept Address {
+  o String name
+  o String address
+  o String latitude
+  o String longitude
+  o String City optional
+  o Long EstimatedTimeForDelivery optional
+}
+concept HistoryFields {
+  o String description
+  o String location
+  o Double currentLongitude optional
+  o Double currentLatitude optional
+  o Long datetime
+  o Integer level default = 1
+  o Boolean isCurrentStatus default = true
+}
+
+participant Client identified by ClientId{
+  o String ClientId
+  o String ClientName
+  o String City
+  o String State
+}
+
+participant Customer extends ProductHolder {
+  o String buyerName
+  o String buyerAddress
+  o String buyerCity
+  o String buyerState
+  o String contactNo
+  o String latitude
+  o String longitude
+}
+
+participant Transporter extends ProductHolder  {
+  o String DriverFirstName
+  o String DriverLastName
+  o String TransporterName
+  o String VehicleNumber
+  o String VehicleId
+  o String emailId
+  o String DeliveryId optional
+  --> Order[] orders optional
+  o DeliveredOrders[] deliveredOrders optional
+  // o Integer StatusId default = 0 range = [0,3]
+  o String EstimatedTimeForDelivery optional
+  o String location optional
+  o String usertype default ="Transporter" optional
+  o Boolean IsCourier default = false optional 
+  }
+
+
+participant Warehouse extends ProductHolder {
+  o Integer id
+  o Integer userId 
+  o String name 
+  o String address 
+  o Double latitude 
+  o Double longitude 
+  o String number
+  o String usertype default ="Warehouse" optional
+}
+
+participant WarehouseForTransporter extends Warehouse {
+  o String EstimatedTimeForDelivery
+  o String TransporterName 
+}
+
+asset WarehouseHistory extends History {
+  o WarehouseTransactions[] warehouseTransactions optional
+}
+
+asset Contract identified by contractId {
+  o String contractId
+  o String pincode
+  o Address[] hubs
+}
+
+asset Product identified by itemCode {
+  o String itemCode
+  o String description
+  o String barcode
+  o String client
+  o String weight
+  o Boolean isFragile
+}
+
+asset Order identified by orderId {
+  --> ProductHolder holder
+  o String orderId
+  o Integer id
+  o String pincode
+  o String buyerRegion
+  o String buyerState
+  o String orderNo
+  o Integer statusId  default = 1 range=[1,6]
+  o Double orderDateTime
+  o Double orderLocationLat
+  o Double orderLocationLng
+  o String orderLocationAddress 
+  o String description 
+  o String qrCodeText 
+  o String buyerName 
+  o String buyerAddress 
+  o String shipperName 
+  o String shipperAddress 
+  o String sellerCity 
+  o String buyerCity 
+  o String sellerAddress 
+  o Double sellerLocationLng 
+  o Double sellerLocationLat 
+  o String shippingService 
+  o String contactNo 
+  o String currentLocationReached
+  o String DeliveryId optional
+  o String ToLocation optional
+}
+
+
+asset OrderHistory extends History {
+  o HistoryFields[] history
+}
+
+
+transaction PlaceOrder {
+  o Order order
+}
+
+transaction AssignTransporter {
+  o String DeliveryId
+  --> Transporter transporter
+  o String EstimatedTime
+  o String ToLocation
+  o Double currentLongitude 
+  o Double currentLatitude 
+ --> Order[] orders
+--> OrderHistory[] historys
+}
+
+transaction AcceptOrder {
+  o Double currentLongitude
+  o Double currentLatitude
+  --> Transporter transporter
+  --> OrderHistory[] historys
+}
+
+transaction DeliverOrder {
+  o Double currentLongitude
+  o Double currentLatitude
+  --> Transporter transporter
+  --> Warehouse productHolder
+  --> OrderHistory[] historys
+}
+
+transaction StartDeliveryTransporter {
+  o Double currentLongitude
+  o Double currentLatitude
+  --> Transporter transporter
+  --> OrderHistory[] historys
+}
+
+transaction ScanProductsInWarehouse {
+  o Double currentLongitude
+  o Double currentLatitude
+  --> Warehouse warehouse
+  --> Order[] orders
+  --> OrderHistory[] historys
+}
+
+transaction DeliverToCustomer {
+  o String OTP
+  o Double currentLongitude
+  o Double currentLatitude
+  --> Transporter courier
+  --> Order order
+}
+
+@returns(ProductHolder)
+transaction VerifyUser{
+  o String username
+  o String password
+}

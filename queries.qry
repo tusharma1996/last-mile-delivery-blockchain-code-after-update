@@ -1,0 +1,90 @@
+/**Queries for Searching network*/
+
+query viewOrderswithStatusId {
+  description: "View all Order with given Status Id"
+  statement:
+    SELECT delivery.Order
+      WHERE (statusId == _$StatusId)
+}
+
+query IsUserValid {
+  description: "Validates Warehouse credentials"
+  statement:
+    SELECT delivery.ProductHolder
+     WHERE (holderId==_$Username AND password==_$Password)
+}
+
+query IsWarehouseValid {
+  description: "Validates Warehouse credentials"
+  statement:
+    SELECT delivery.Warehouse
+     WHERE (holderId==_$Username AND password==_$Password)
+}
+
+query IsTransporterValid {
+  description: "Validates Transporter credentials"
+  statement:
+    SELECT delivery.Transporter
+     WHERE (holderId==_$Username AND password==_$Password)
+}
+
+query viewOrderswithRegion {
+  description: "View all Order in a Region"
+  statement:
+    SELECT delivery.Order
+      WHERE (buyerRegion == _$region)
+}
+query viewOrderswithState {
+  description: "View all Order in a Region"
+  statement:
+    SELECT delivery.Order
+      WHERE (buyerState == _$region)
+}
+query viewOrderswithHolder {
+  description: "View all Order with a Holder"
+  statement:
+    SELECT delivery.Order
+      WHERE (holder == _$holder)
+}
+
+query getOrderDetailsByOrderId {
+  description: "View Order Details by OrderId"
+  statement:
+    SELECT delivery.Order
+      WHERE (id == _$OrderId)
+}
+
+query getOrdersWithTransporterRecievedOrAccepted{
+  description: "Get all the orders to delivery with Transporter"
+  statement:
+    SELECT delivery.Transporter
+      WHERE (holderId == _$TransporterId)
+}
+
+query getContractforOrder {
+  description: "Get Contract details"
+  statement:
+    SELECT delivery.Contract
+      WHERE (pincode == _$Pincode)
+}
+
+query getOrderHistory {
+  description: "Gives orders tracking details"
+  statement:
+    SELECT delivery.OrderHistory
+     WHERE (historyId == _$orderId)
+}
+
+query getOrdersWithTransporterBasedOnOrderStatus {
+  description: "Gives orders details with transporter based on the status of the order"
+  statement:
+    SELECT delivery.Order
+     WHERE (statusId == _$status AND holder == _$holder) 
+}
+
+query getWarehouseDetailsForTransporter {
+  description: "Give warehouse detials when requested by transporter"
+  statement:
+   SELECT delivery.WarehouseForTransporter
+    WHERE (TransporterName == _$transporter)
+}

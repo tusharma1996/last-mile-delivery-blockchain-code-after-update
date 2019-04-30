@@ -1,0 +1,5 @@
+{"name":"last-mile-delivery-network",
+"version":"0.0.14",
+"description":"Changed usernames to @q3.com of Warehouse and Transporters, added console logs in assign orders, removed excess return in asign orders, added await functions, changed accept orders .js,changed start_delivery.js and deliveryed js, changed scan.js(added return in order updtae, added the IsCourier flag in transporter model removed the usertype field )",
+"scripts":{"test":"mocha --recursive"},"author":"Tushar","email":"tushar@gmail.com","license":"Apache-2.0","devDependencies":{"composer-admin":"latest","composer-client":"latest","composer-common":"latest",
+"composer-connector-embedded":"latest","chai":"latest","eslint":"latest","istanbul":"latest","mkdirp":"latest","mocha":"latest"}}

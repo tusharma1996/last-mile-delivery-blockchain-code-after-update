@@ -1,0 +1,167 @@
+#!/bin/bash
+
+echo "adding Orders via Place order transaction"
+composer transaction submit -c admin@last-mile-delivery-network -d '{
+  "$class": "delivery.PlaceOrder",
+  "order":{
+  "$class": "delivery.Order",
+  "orderId": "OrderAjmer1",
+  "id": 1,
+  "holder": "resource:delivery.Warehouse#WarehouseGurgaon",
+  "pincode": "305001",
+  "buyerRegion": "North",
+  "buyerState": "Rajasthan",
+  "orderNo": "ORD000AJ1",
+  "statusId": 2, 
+  "orderDateTime": 1551353278451,
+  "orderLocationLat": 28.422572,
+  "orderLocationLng": 77.000422,
+  "orderLocationAddress": "38/6, Delhi - Jaipur Expy, Mohammed Pur, Khandsha, Sector 37, Gurugram, Haryana 122004",
+  "description": "This is a sample order",
+  "qrCodeText": "q6",
+  "buyerName": "Splash Mobile Shop",
+  "buyerAddress": "Opp Elite Restaurant, Station Road, Ajmer, Rajasthan 305001",
+  "shipperName": "Jai Durga Electronics",
+  "shipperAddress": "",
+  "sellerCity": "Gurugram, Hariyana",
+  "buyerCity": "Ajmer",
+  "sellerAddress": "Khandsa Road, Near HDFC Bank, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122018",
+  "sellerLocationLng": 28.439874,
+  "sellerLocationLat": 77.00658,
+  "shippingService": "Standard",
+  "contactNo": "9876543210",
+  "currentLocationReached": "North Warehouse"
+}
+}'
+
+composer transaction submit -c admin@last-mile-delivery-network -d '{
+  "$class": "delivery.PlaceOrder",
+  "order":{
+  "$class": "delivery.Order",
+  "holder": "resource:delivery.Warehouse#WarehouseGurgaon",
+   "orderId": "OrderAjmer2",
+  "id": 2,
+  "pincode": "305001",
+  "buyerRegion": "North",
+  "buyerState": "Rajasthan",
+  "orderNo": "ORD000AJ2",
+  "statusId": 2, 
+  "orderDateTime": 1551353278451,
+  "orderLocationLat": 28.422572,
+  "orderLocationLng": 77.000422,
+  "orderLocationAddress": "38/6, Delhi - Jaipur Expy, Mohammed Pur, Khandsha, Sector 37, Gurugram, Haryana 122004",
+  "description": "This is a sample order",
+  "qrCodeText": "q7",
+  "buyerName": "Rajputana Automobiles",
+  "buyerAddress": "Kutchery Road, Mahatma Gandhi Marg, Ajmer, Rajasthan 305001",
+  "shipperName": "Jai Durga Electronics",
+  "shipperAddress": "",
+  "sellerCity": "Gurugram, Hariyana",
+  "buyerCity": "Ajmer",
+  "sellerAddress": "Khandsa Road, Near HDFC Bank, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122018",
+  "sellerLocationLng": 28.439874,
+  "sellerLocationLat": 77.00658,
+  "shippingService": "Standard",
+  "contactNo": "9876543210",
+  "currentLocationReached": "North Warehouse"
+}
+}'
+
+composer transaction submit -c admin@last-mile-delivery-network -d '{
+  "$class": "delivery.PlaceOrder",
+  "order":{
+  "$class": "delivery.Order",
+  "holder": "resource:delivery.Warehouse#WarehouseGurgaon",
+  "orderId": "OrderJaipur1",
+  "id": 3,
+  "pincode": "302002",
+  "buyerRegion": "North",
+  "buyerState": "Rajasthan",
+  "orderNo": "ORD000JP1",
+  "statusId": 2, 
+  "orderDateTime": 1551353278451,
+  "orderLocationLat": 28.422572,
+  "orderLocationLng": 77.000422,
+  "orderLocationAddress": "38/6, Delhi - Jaipur Expy, Mohammed Pur, Khandsha, Sector 37, Gurugram, Haryana 122004",
+  "description": "This is a sample order",
+  "qrCodeText": "q1",
+  "buyerName": "Koolwal Electronics",
+  "buyerAddress": "Shop No A 16-17, Radio Market, Nehru Bazar, Radio Market, Jaipur, Rajasthan 302002",
+  "shipperName": "Jai Durga Electronics",
+  "shipperAddress": "",
+  "sellerCity": "Gurugram, Hariyana",
+  "buyerCity": "Jaipur",
+  "sellerAddress": "Khandsa Road, Near HDFC Bank, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122018",
+  "sellerLocationLng": 28.439874,
+  "sellerLocationLat": 77.00658,
+  "shippingService": "Standard",
+  "contactNo": "9876543210",
+  "currentLocationReached": "North Warehouse"
+}
+}'
+
+composer transaction submit -c admin@last-mile-delivery-network -d '{
+  "$class": "delivery.PlaceOrder",
+  "order":{
+  "$class": "delivery.Order",
+  "holder": "resource:delivery.Warehouse#WarehouseGurgaon",
+  "orderId": "OrderJaipur2",
+  "id": 4,
+  "pincode": "302002",
+  "buyerRegion": "North",
+  "buyerState": "Rajasthan",
+  "orderNo": "ORD000JP2",
+  "statusId": 2, 
+  "orderDateTime": 1551353278451,
+  "orderLocationLat": 28.422572,
+  "orderLocationLng": 77.000422,
+  "orderLocationAddress": "38/6, Delhi - Jaipur Expy, Mohammed Pur, Khandsha, Sector 37, Gurugram, Haryana 122004",
+  "description": "This is a sample order",
+  "qrCodeText": "q2",
+  "buyerName": "Shri Gupta Electronics",
+  "buyerAddress": "Jagdish Colony Rd, Kailashpuri, Ramgarhmode, Kagdiwara, Brahampuri, Jaipur, Rajasthan 302002",
+  "shipperName": "Jai Durga Electronics",
+  "shipperAddress": "",
+  "sellerCity": "Gurugram, Hariyana",
+  "buyerCity": "Jaipur",
+  "sellerAddress": "Khandsa Road, Near HDFC Bank, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122018",
+  "sellerLocationLng": 28.439874,
+  "sellerLocationLat": 77.00658,
+  "shippingService": "Standard",
+  "contactNo": "9876543210",
+  "currentLocationReached": "North Warehouse"
+}
+}'
+
+composer transaction submit -c admin@last-mile-delivery-network -d '{
+  "$class": "delivery.PlaceOrder",
+  "order":{
+  "$class": "delivery.Order",
+  "holder": "resource:delivery.Warehouse#WarehouseGurgaon",
+  "orderId": "OrderJaipur3",
+  "id": 5,
+  "pincode": "302002",
+  "buyerRegion": "North",
+  "buyerState": "Rajasthan",
+  "orderNo": "ORD000JP3",
+  "statusId": 2, 
+  "orderDateTime": 1551353278451,
+  "orderLocationLat": 28.422572,
+  "orderLocationLng": 77.000422,
+  "orderLocationAddress": "38/6, Delhi - Jaipur Expy, Mohammed Pur, Khandsha, Sector 37, Gurugram, Haryana 122004",
+  "description": "This is a sample order",
+  "qrCodeText": "q3",
+  "buyerName": "Shikha Electronics",
+  "buyerAddress": "1126, Main Subhash Chowk Circle, Subhash Chowk, Jaipur, Rajasthan 302002",
+  "shipperName": "Jai Durga Electronics",
+  "shipperAddress": "",
+  "sellerCity": "Gurugram, Hariyana",
+  "buyerCity": "Jaipur",
+  "sellerAddress": "Khandsa Road, Near HDFC Bank, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122018",
+  "sellerLocationLng": 28.439874,
+  "sellerLocationLat": 77.00658,
+  "shippingService": "Standard",
+  "contactNo": "9876543210",
+  "currentLocationReached": "North Warehouse"
+}
+}'

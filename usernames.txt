@@ -1,0 +1,7 @@
+  public static final String WARE1 = "ware1@q3.com";//Admin warehouse Gurgaon
+    public static final String WARE2 = "ware2@q3.com";//Jaipur Warehouse
+    public static final String WARE3 = "ware3@q3.com";// Ajmer Warehouse
+    public static final String TRANS1 = "trans1@q3.com";//GurgaonToJaipur
+    public static final String TRANS2 = "trans2@q3.com";//JaipurToAjmer
+    public static final String TRANS3 = "trans3@q3.com";//JaipurToCustomer
+    public static final String TRANS4 = "trans4@q3.com";//AjmerToCustomer
